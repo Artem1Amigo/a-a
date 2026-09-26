@@ -73,7 +73,7 @@
   @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-18px); } }
 
-  .envelope-wrap { cursor: pointer; display: inline-block; padding: 20px; background: none; border: none; }
+  .envelope-wrap { display: inline-block; padding: 20px; background: none; border: none; }
   .envelope-emoji {
     font-size: clamp(64px, 18vw, 96px);
     display: inline-block;
@@ -292,9 +292,9 @@
   </section>
 
   <section class="screen" id="screen-envelope">
-    <button class="envelope-wrap" id="envelopeWrap" aria-label="Відкрити">
+    <div class="envelope-wrap" id="envelopeWrap">
       <span class="envelope-emoji" id="envelopeEmoji">💌</span>
-    </button>
+    </div>
   </section>
 
   <section class="screen" id="screen-map">
@@ -398,7 +398,7 @@
     envEmoji.classList.add('opening');
     setTimeout(() => showScreen('screen-map'), 450);
   }
-  document.getElementById('envelopeWrap').addEventListener('click', openEnvelope);
+  // opens only via "shake" (mouse shake on desktop, real device shake on mobile)
 
   function isEnvelopeActive() {
     return envelopeScreen.classList.contains('active');
